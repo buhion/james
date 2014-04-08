@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>James List</title>
+  <style>
+    table,th,td
+    {
+      border:1px solid black;
+      border-collapse:collapse;
+    }
+     th, td
+    {
+     padding:5px;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+<button type="button" onclick="displayAll()">All</button>
+<button type="button" onclick="displayPassed()">Passed</button>
+<button type="button" onclick="displayFailed()">Failed</button>
+</p>
+
+<div id="mylist">test</div>
+
+</body>
+<script>
+document.getElementById("mylist").innerHTML=displayList("");
+
+function displayAll() {
+  document.getElementById("mylist").innerHTML=displayList("");
+}
+
+function displayPassed() {
+  document.getElementById("mylist").innerHTML=displayList("Passed");
+}
+
+function displayFailed() {
+  document.getElementById("mylist").innerHTML=displayList("Failed");
+}
+
+function displayList(statusType) {
+  var student1={
+    firstname : "James",
+    lastname : "Buhion",
+    grade : 90,
+    status : "Passed"
+  };
+  var student2={
+    firstname : "Debbie",
+    lastname : "Buhion",
+    grade : 95,
+    status : "Passed"
+  };
+  var student3={
+    firstname : "Ruthie",
+    lastname : "Buhion",
+    grade : 95,
+    status : "Passed"
+  };
+  var student4={
+    firstname : "Jun",
+    lastname : "Tam",
+    grade : 79,
+    status : "Failed"
+  };
+
+  var students = new Array();
+  students[0] = student1;
+  students[1] = student2;
+  students[2] = student3;
+  students[3] = student4;
+
+  var data = "<table border='1' style='width:300px'>";
+  for (var i=0; i<students.length; i++) {
+    if (students[i].status.indexOf(statusType) > -1) {
+      data += "<tr><td>" + 
+        students[i].firstname + "</td><td>" +  
+	students[i].lastname + "</td><td>" +  
+	students[i].grade + "</td><td>" + 
+	students[i].status + "</td></tr>";
+    }
+  };
+  data += "</table>";
+
+  return data;
+}
+
+</script>
+
+</html>
